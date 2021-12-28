@@ -11,9 +11,10 @@ func main() {
 	fmt.Println("open-jd-sdk")
 	var goodReq model.JFGoodsReq
 	goodReq.EliteId = 2
-	request, _ := json.Marshal(model.JFQueryRequest{GoodReq: goodReq})
+	jfQueryRequest := model.JFQueryRequest{GoodReq: goodReq}
 
 	jdClient := client.New()
-	res := jdClient.Execute("jd.union.open.goods.jingfen.query", request)
-	fmt.Println(res)
+	var jingfenQueryResult model.JingfenQueryResult
+	json.Unmarshal(jdClient.Execute("jd.union.open.goods.jingfen.query", jfQueryRequest), &jingfenQueryResult)
+	fmt.Println(jfQueryRequest)
 }

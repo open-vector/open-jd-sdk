@@ -26,8 +26,14 @@ func New() JdClient {
 	return JdClient{AppKey: "2ac1c5db7e31d4a85d145ac19fa3d4e8", V: "1.0", SecretKey: "47c30eb69dbb422097842d039df4133e"}
 }
 
-func (jdClient JdClient) Execute(method string, request []byte) model.JingfenQueryResult {
+type RequestInterface interface {
+	GetByte() []byte
+}
+
+func (jdClient JdClient) Execute(method string, requestInterface RequestInterface) []byte {
 	url := "https://api.jd.com/routerjson"
+
+	request := requestInterface.GetByte()
 
 	jdClient.Timestamp = time.Now().Format("2006-01-02 15:04:05")
 	jdClient.Method = method
@@ -54,16 +60,17 @@ func (jdClient JdClient) Execute(method string, request []byte) model.JingfenQue
 	if err != nil {
 		fmt.Println(err)
 	}
-
 	fmt.Println(string(body))
 
 	var jfQueryResponse model.JFQueryResponse
 	json.Unmarshal(body, &jfQueryResponse)
 
-	var jingfenQueryResult model.JingfenQueryResult
-	json.Unmarshal([]byte(jfQueryResponse.Body.QueryResult), &jingfenQueryResult)
+	return []byte(jfQueryResponse.Body.QueryResult)
 
-	return jingfenQueryResult
+	//var jingfenQueryResult model.JingfenQueryResult
+	//json.Unmarshal([]byte(jfQueryResponse.Body.QueryResult), &jingfenQueryResult)
+	//
+	//return jingfenQueryResult
 }
 
 func sign(src string) string {
