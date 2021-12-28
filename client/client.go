@@ -67,9 +67,11 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface, response int
 	}
 	fmt.Println(string(body))
 
-	var jfQueryResponse model.JFQueryResponse
-	json.Unmarshal(body, &jfQueryResponse)
-	json.Unmarshal([]byte(jfQueryResponse.Body.QueryResult), response)
+	var mapTest map[string]model.Body
+	json.Unmarshal(body, &mapTest)
+	for _, v := range mapTest {
+		json.Unmarshal([]byte(v.QueryResult), response)
+	}
 }
 
 func sign(src string) string {
