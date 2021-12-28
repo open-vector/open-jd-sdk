@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/open-vector/mallPromotie/backend/client"
 	"github.com/open-vector/mallPromotie/backend/model"
@@ -24,7 +23,7 @@ func main() {
 	// 这里发送请求已经抽象好，但是不知道是不是最好的方法，每个requet都要实现接口RequestInterface的GetByte方法，响应也没抽象
 	// todo 待优化 这个method应该也是可以抽一下
 	var jingfenQueryResult model.JingfenQueryResult
-	json.Unmarshal(jdClient.Execute(jfQueryRequest), &jingfenQueryResult)
+	jdClient.Execute(jfQueryRequest, &jingfenQueryResult)
 	fmt.Println(jingfenQueryResult)
 	fmt.Println(jsonUtil.ObjToString(jingfenQueryResult))
 }

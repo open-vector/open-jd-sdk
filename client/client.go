@@ -34,7 +34,7 @@ type RequestInterface interface {
 }
 
 // Execute 发送http请求获取响应结果
-func (jdClient JdClient) Execute(requestInterface RequestInterface) []byte {
+func (jdClient JdClient) Execute(requestInterface RequestInterface, response interface{}) {
 	url := "https://api.jd.com/routerjson"
 
 	request := jsonUtil.GetByte(requestInterface)
@@ -69,8 +69,7 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface) []byte {
 
 	var jfQueryResponse model.JFQueryResponse
 	json.Unmarshal(body, &jfQueryResponse)
-
-	return []byte(jfQueryResponse.Body.QueryResult)
+	json.Unmarshal([]byte(jfQueryResponse.Body.QueryResult), response)
 }
 
 func sign(src string) string {
