@@ -67,9 +67,9 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface, response int
 	}
 	fmt.Println(string(body))
 
-	var mapTest map[string]model.Body
-	json.Unmarshal(body, &mapTest)
-	for _, v := range mapTest {
+	var resultMap map[string]model.Body
+	json.Unmarshal(body, &resultMap)
+	for _, v := range resultMap {
 		json.Unmarshal([]byte(v.QueryResult), response)
 	}
 }
