@@ -23,20 +23,20 @@ type JFGoodsReq struct {
 	247-京喜9.9,249-京喜秒杀,315-秒杀未开始,340-时尚趋势品,341-3C新品,342-智能新品,343-3C长尾商品,345-时尚新品,346-时尚爆品,
 	426-京喜自营,1001-选品库
 	*/
-	EliteId int `json:"eliteId"`
-	//PageIndex int `json:"pageIndex"`
-	//PageSize  int `json:"pageSize"`
+	EliteId   int `json:"eliteId"`
+	PageIndex int `json:"pageIndex"`
+	PageSize  int `json:"pageSize"`
 	/**
 	排序字段(price：单价, commissionShare：佣金比例, commission：佣金， inOrderCount30DaysSku：sku维度30天引单量，
 	comments：评论数，goodComments：好评数)
 	*/
-	//SortName     string `json:"sortName"`
-	//Sort         string `json:"sort"`
-	//Pid          string `json:"pid"`
-	//Fields       string `json:"fields"`
-	//ForbidTypes  string `json:"forbidTypes"`
-	//GroupId      int    `json:"groupId"`
-	//OwnerUnionId int    `json:"ownerUnionId"`
+	SortName     string `json:"sortName"`
+	Sort         string `json:"sort"`
+	Pid          string `json:"pid"`
+	Fields       string `json:"fields"`
+	ForbidTypes  string `json:"forbidTypes"`
+	GroupId      int    `json:"groupId"`
+	OwnerUnionId int    `json:"ownerUnionId"`
 }
 
 /**
