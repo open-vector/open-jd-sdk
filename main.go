@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/open-vector/mallPromotie/backend/client"
-	"github.com/open-vector/mallPromotie/backend/model"
-	"github.com/open-vector/mallPromotie/backend/util/jsonUtil"
+	"github.com/open-vector/open-jd-sdk/client"
+	"github.com/open-vector/open-jd-sdk/model"
+	"github.com/open-vector/open-jd-sdk/util/jsonUtil"
 )
 
 func main() {
