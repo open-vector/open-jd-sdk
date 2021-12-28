@@ -1,1 +1,1 @@
-# open-jd-sdk
+# 京东联盟go语言sdk
