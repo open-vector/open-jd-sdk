@@ -86,8 +86,6 @@ func getPreSignStr(jdClient JdClient) string {
 }
 
 func getReader(jdClient JdClient) string {
-	appKey := "2ac1c5db7e31d4a85d145ac19fa3d4e8"
-	v := "1.0"
 	return fmt.Sprintf("app_key=%s&v=%s&method=%s&timestamp=%s&sign=%s&360buy_param_json=%s",
-		appKey, v, jdClient.Method, jdClient.Timestamp, jdClient.Sign, jdClient.Param)
+		jdClient.AppKey, jdClient.V, jdClient.Method, jdClient.Timestamp, jdClient.Sign, jdClient.Param)
 }
