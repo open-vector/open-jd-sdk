@@ -22,5 +22,5 @@ func main() {
 	// 这里发送请求已经抽象好，但是不知道是不是最好的方法，每个requet都要实现接口RequestInterface的GetByte方法，响应也没抽象
 	// todo 待优化 这个method应该也是可以抽一下
 	json.Unmarshal(jdClient.Execute("jd.union.open.goods.jingfen.query", jfQueryRequest), &jingfenQueryResult)
-	fmt.Println(jfQueryRequest)
+	fmt.Println(jingfenQueryResult)
 }
