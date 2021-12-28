@@ -12,6 +12,7 @@ func GetByte(obj interface{}) []byte {
 	return bytes
 }
 
-func StringToObj(str interface{}) string {
-	return ""
+func StringToObj(str string, t interface{}) error {
+	data := []byte(str)
+	return json.Unmarshal(data, t)
 }

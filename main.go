@@ -9,8 +9,7 @@ import (
 
 func main() {
 	// 定义请求体
-	var goodReq model.JFGoodsReq
-	goodReq.EliteId = 2
+	goodReq := model.JFGoodsReq{EliteId: 2}
 	jfQueryRequest := model.JFQueryRequest{GoodReq: goodReq}
 
 	// 实例化一个client
