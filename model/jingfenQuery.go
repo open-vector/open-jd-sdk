@@ -43,6 +43,7 @@ type JFGoodsReq struct {
 response
 */
 
+// todo 待优化 jd_union_open_goods_jingfen_query_responce这个需要抽出来 map不知道行不行
 type JFQueryResponse struct {
 	Body struct {
 		Code string `json:"code"`
