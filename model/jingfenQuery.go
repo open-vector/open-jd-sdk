@@ -1,18 +1,11 @@
 package model
 
-import "encoding/json"
-
 /**
 request
 */
 
 type JFQueryRequest struct {
 	GoodReq JFGoodsReq `json:"goodsReq"`
-}
-
-func (jFQueryRequest JFQueryRequest) GetByte() []byte {
-	bytes, _ := json.Marshal(jFQueryRequest)
-	return bytes
 }
 
 func (jFQueryRequest JFQueryRequest) GetMethod() string {

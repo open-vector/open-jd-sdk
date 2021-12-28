@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/open-vector/mallPromotie/backend/model"
+	"github.com/open-vector/mallPromotie/backend/util/jsonUtil"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -29,15 +30,14 @@ func New() JdClient {
 
 // RequestInterface 定义一个通用请求interface 所有的request都必须实现这两个方法
 type RequestInterface interface {
-	GetByte() []byte
 	GetMethod() string
 }
 
 // Execute 发送http请求获取响应结果
-func (jdClient JdClient) Execute(requestInterface RequestInterface) []byte {
+func (jdClient JdClient) Execute(requestInterface RequestInterface) interface{} {
 	url := "https://api.jd.com/routerjson"
 
-	request := requestInterface.GetByte()
+	request := jsonUtil.GetByte(requestInterface)
 	method := requestInterface.GetMethod()
 
 	jdClient.Timestamp = time.Now().Format("2006-01-02 15:04:05")
@@ -70,7 +70,9 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface) []byte {
 	var jfQueryResponse model.JFQueryResponse
 	json.Unmarshal(body, &jfQueryResponse)
 
-	return []byte(jfQueryResponse.Body.QueryResult)
+	var jingfenQueryResult model.JingfenQueryResult
+	json.Unmarshal([]byte(jfQueryResponse.Body.QueryResult), &jingfenQueryResult)
+	return jingfenQueryResult
 }
 
 func sign(src string) string {
