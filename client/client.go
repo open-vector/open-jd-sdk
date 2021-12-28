@@ -67,6 +67,7 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface, response int
 	}
 	fmt.Println(string(body))
 
+	// 这里只考虑了不报错的情况，报错情况出了问题再说
 	var resultMap map[string]model.Body
 	json.Unmarshal(body, &resultMap)
 	for _, v := range resultMap {
