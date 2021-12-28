@@ -47,7 +47,6 @@ type JFQueryResponse struct {
 	Body struct {
 		Code string `json:"code"`
 		// 这里想直接拿JingfenQueryResult接，接不到，必须拿string先接然后再转
-
 		QueryResult string `json:"queryResult"`
 	} `json:"jd_union_open_goods_jingfen_query_responce"`
 }
