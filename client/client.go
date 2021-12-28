@@ -28,12 +28,14 @@ func New() JdClient {
 
 type RequestInterface interface {
 	GetByte() []byte
+	GetMethod() string
 }
 
-func (jdClient JdClient) Execute(method string, requestInterface RequestInterface) []byte {
+func (jdClient JdClient) Execute(requestInterface RequestInterface) []byte {
 	url := "https://api.jd.com/routerjson"
 
 	request := requestInterface.GetByte()
+	method := requestInterface.GetMethod()
 
 	jdClient.Timestamp = time.Now().Format("2006-01-02 15:04:05")
 	jdClient.Method = method

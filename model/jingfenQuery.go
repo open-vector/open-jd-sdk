@@ -15,6 +15,10 @@ func (jFQueryRequest JFQueryRequest) GetByte() []byte {
 	return bytes
 }
 
+func (jFQueryRequest JFQueryRequest) GetMethod() string {
+	return "jd.union.open.goods.jingfen.query"
+}
+
 type JFGoodsReq struct {
 	/**
 	频道ID:1-好券商品,2-精选卖场,10-9.9包邮,15-京东配送,22-实时热销榜,23-为你推荐,24-数码家电,25-超市,26-母婴玩具,27-家具日用,
