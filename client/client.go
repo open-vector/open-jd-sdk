@@ -22,15 +22,18 @@ type JdClient struct {
 	SecretKey string `json:"secretKey"`
 }
 
+// New 实例化jdClient
 func New() JdClient {
 	return JdClient{AppKey: "2ac1c5db7e31d4a85d145ac19fa3d4e8", V: "1.0", SecretKey: "47c30eb69dbb422097842d039df4133e"}
 }
 
+// RequestInterface 定义一个通用请求interface 所有的request都必须实现这两个方法
 type RequestInterface interface {
 	GetByte() []byte
 	GetMethod() string
 }
 
+// Execute 发送http请求获取响应结果
 func (jdClient JdClient) Execute(requestInterface RequestInterface) []byte {
 	url := "https://api.jd.com/routerjson"
 
@@ -68,11 +71,6 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface) []byte {
 	json.Unmarshal(body, &jfQueryResponse)
 
 	return []byte(jfQueryResponse.Body.QueryResult)
-
-	//var jingfenQueryResult model.JingfenQueryResult
-	//json.Unmarshal([]byte(jfQueryResponse.Body.QueryResult), &jingfenQueryResult)
-	//
-	//return jingfenQueryResult
 }
 
 func sign(src string) string {
