@@ -14,6 +14,7 @@ func main() {
 	jfQueryRequest := model.JFQueryRequest{GoodReq: goodReq}
 
 	// 实例化一个client
+	// todo 让使用sdk的用户指定ak sk等等 目前写死
 	jdClient := client.New()
 
 	// 定义响应体
