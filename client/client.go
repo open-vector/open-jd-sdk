@@ -75,6 +75,7 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface, response int
 	}
 }
 
+// md5加密
 func sign(src string) string {
 	m := md5.New()
 	m.Write([]byte(src))
@@ -82,11 +83,13 @@ func sign(src string) string {
 	return strings.ToTitle(res)
 }
 
+// 获取签名前字符串
 func getPreSignStr(jdClient JdClient) string {
 	return fmt.Sprintf("%s360buy_param_json%sapp_key%smethod%stimestamp%sv%s%s",
 		jdClient.SecretKey, jdClient.Param, jdClient.AppKey, jdClient.Method, jdClient.Timestamp, jdClient.V, jdClient.SecretKey)
 }
 
+// 构造payload
 func getReader(jdClient JdClient) string {
 	return fmt.Sprintf("app_key=%s&v=%s&method=%s&timestamp=%s&sign=%s&360buy_param_json=%s",
 		jdClient.AppKey, jdClient.V, jdClient.Method, jdClient.Timestamp, jdClient.Sign, jdClient.Param)
