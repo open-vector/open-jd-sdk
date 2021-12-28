@@ -42,13 +42,14 @@ response
 */
 
 // todo 待优化 jd_union_open_goods_jingfen_query_responce这个需要抽出来 map不知道行不行
-type JFQueryResponse struct {
-	Body struct {
-		Code string `json:"code"`
-		// 这里想直接拿JingfenQueryResult接，接不到，必须拿string先接然后再转
-		QueryResult string `json:"queryResult"`
-	} `json:"jd_union_open_goods_jingfen_query_responce"`
-}
+// 已修改，先留着
+//type JFQueryResponse struct {
+//	Body struct {
+//		Code string `json:"code"`
+//		// 这里想直接拿JingfenQueryResult接，接不到，必须拿string先接然后再转
+//		QueryResult string `json:"queryResult"`
+//	} `json:"jd_union_open_goods_jingfen_query_responce"`
+//}
 
 type Body struct {
 	Code string `json:"code"`
