@@ -6,6 +6,7 @@ request
 
 type JFQueryRequest struct {
 	GoodReq JFGoodsReq `json:"goodsReq"`
+	Result  JingfenQueryResult
 }
 
 func (jFQueryRequest JFQueryRequest) GetMethod() string {
