@@ -1,6 +1,10 @@
-package model
+package goods
+
+import "github.com/open-vector/open-jd-sdk/model"
 
 // 精粉精选商品查询接口
+// 京东联盟精选优质商品，每日更新，可通过频道ID查询各个频道下的精选商品。用获取的优惠券链接调用转链接口时，需传入搜索接口link字段返回的原始优惠券链接，
+// 切勿对链接进行任何encode、decode操作，否则将导致转链二合一推广链接时校验失败。
 
 /**
 request
@@ -10,7 +14,7 @@ type JingfenQueryRequest struct {
 	GoodReq JFGoodsReq `json:"goodsReq"`
 }
 
-func (jingfenQueryRequest JingfenQueryRequest) GetMethod() string {
+func (JingfenQueryRequest) GetMethod() string {
 	return "jd.union.open.goods.jingfen.query"
 }
 
@@ -43,9 +47,8 @@ response
 */
 
 type JingfenQueryResult struct {
-	Code       int           `json:"code"`
+	model.BaseResult
 	Data       []JFGoodsResp `json:"data"`
-	Message    string        `json:"message"`
 	RequestId  string        `json:"requestId"`
 	TotalCount int           `json:"totalCount"`
 }

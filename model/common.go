@@ -22,3 +22,8 @@ type Response struct {
 	// 这里想直接拿JingfenQueryResult接，接不到，必须拿string先接然后再转
 	QueryResult string `json:"queryResult"`
 }
+
+type BaseResult struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}
