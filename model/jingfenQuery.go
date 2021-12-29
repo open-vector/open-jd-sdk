@@ -1,5 +1,7 @@
 package model
 
+// 精粉精选商品查询接口
+
 /**
 request
 */
