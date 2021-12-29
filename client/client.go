@@ -23,8 +23,8 @@ type JdClient struct {
 }
 
 // New 实例化jdClient
-func New() JdClient {
-	return JdClient{AppKey: "2ac1c5db7e31d4a85d145ac19fa3d4e8", V: "1.0", SecretKey: "47c30eb69dbb422097842d039df4133e"}
+func New(appKey string, secretKey string) JdClient {
+	return JdClient{AppKey: appKey, V: "1.0", SecretKey: secretKey}
 }
 
 // Execute 发送http请求获取响应结果
