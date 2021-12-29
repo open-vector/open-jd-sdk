@@ -3,7 +3,6 @@ package client
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"encoding/json"
 	"fmt"
 	"github.com/open-vector/open-jd-sdk/model"
 	"github.com/open-vector/open-jd-sdk/util/jsonUtil"
@@ -28,13 +27,8 @@ func New() JdClient {
 	return JdClient{AppKey: "2ac1c5db7e31d4a85d145ac19fa3d4e8", V: "1.0", SecretKey: "47c30eb69dbb422097842d039df4133e"}
 }
 
-// RequestInterface 定义一个通用请求interface 所有的request都必须实现这两个方法
-type RequestInterface interface {
-	GetMethod() string
-}
-
 // Execute 发送http请求获取响应结果
-func (jdClient JdClient) Execute(requestInterface RequestInterface, response interface{}) {
+func (jdClient JdClient) Execute(requestInterface model.RequestInterface, response interface{}) {
 	url := "https://api.jd.com/routerjson"
 
 	request := jsonUtil.GetByte(requestInterface)
@@ -67,12 +61,8 @@ func (jdClient JdClient) Execute(requestInterface RequestInterface, response int
 	}
 	fmt.Println(string(body))
 
-	// 这里只考虑了不报错的情况，报错情况出了问题再说
-	var resultMap map[string]model.Response
-	json.Unmarshal(body, &resultMap)
-	for _, v := range resultMap {
-		json.Unmarshal([]byte(v.QueryResult), response)
-	}
+	// 返回结果统一处理
+	model.ResponseHandle(body, response)
 }
 
 // md5加密

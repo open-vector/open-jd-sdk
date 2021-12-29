@@ -40,12 +40,6 @@ type JFGoodsReq struct {
 response
 */
 
-type Response struct {
-	Code string `json:"code"`
-	// 这里想直接拿JingfenQueryResult接，接不到，必须拿string先接然后再转
-	QueryResult string `json:"queryResult"`
-}
-
 type JingfenQueryResult struct {
 	Code       int           `json:"code"`
 	Data       []JFGoodsResp `json:"data"`
