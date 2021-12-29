@@ -4,12 +4,11 @@ package model
 request
 */
 
-type JFQueryRequest struct {
+type JingfenQueryRequest struct {
 	GoodReq JFGoodsReq `json:"goodsReq"`
-	Result  JingfenQueryResult
 }
 
-func (jFQueryRequest JFQueryRequest) GetMethod() string {
+func (jingfenQueryRequest JingfenQueryRequest) GetMethod() string {
 	return "jd.union.open.goods.jingfen.query"
 }
 
@@ -41,17 +40,7 @@ type JFGoodsReq struct {
 response
 */
 
-// todo 待优化 jd_union_open_goods_jingfen_query_responce这个需要抽出来 map不知道行不行
-// 已修改，先留着
-//type JFQueryResponse struct {
-//	Body struct {
-//		Code string `json:"code"`
-//		// 这里想直接拿JingfenQueryResult接，接不到，必须拿string先接然后再转
-//		QueryResult string `json:"queryResult"`
-//	} `json:"jd_union_open_goods_jingfen_query_responce"`
-//}
-
-type Body struct {
+type Response struct {
 	Code string `json:"code"`
 	// 这里想直接拿JingfenQueryResult接，接不到，必须拿string先接然后再转
 	QueryResult string `json:"queryResult"`
@@ -66,35 +55,35 @@ type JingfenQueryResult struct {
 }
 
 type JFGoodsResp struct {
-	CategoryInfo           struct{}   `json:"categoryInfo"`
-	Comments               int        `json:"comments"`
-	CommissionInfo         struct{}   `json:"commission_info"`
-	CouponInfo             struct{}   `json:"couponInfo"`
-	GoodCommentsShare      float32    `json:"goodCommentsShare"`
-	ImageInfo              struct{}   `json:"imageInfo"`
-	InOrderCount30Days     int        `json:"inOrderCount30Days"`
-	MaterialUrl            string     `json:"materialUrl"`
-	PriceInfo              struct{}   `json:"priceInfo"`
-	ShopInfo               struct{}   `json:"shopInfo"`
-	SkuId                  int        `json:"skuId"`
-	SkuName                string     `json:"skuName"`
-	Spuid                  int        `json:"spuid"`
-	BrandCode              string     `json:"brandCode"`
-	BrandName              string     `json:"brandName"`
-	Owner                  string     `json:"owner"`
-	PinGouInfo             struct{}   `json:"pinGouInfo"`
-	ResourceInfo           struct{}   `json:"resourceInfo"`
-	InOrderCount30DaysSku  int        `json:"inOrderCount30DaysSku"`
-	SeckillInfo            struct{}   `json:"seckillInfo"`
-	JxFlags                []int      `json:"jxFlags"`
-	VideoInfo              struct{}   `json:"videoInfo"`
-	DocumentInfo           struct{}   `json:"documentInfo"`
-	BookInfo               struct{}   `json:"bookInfo"`
-	ForbidTypes            []int      `json:"forbidTypes"`
-	DeliveryType           int        `json:"deliveryType"`
-	SkuLabelInfo           struct{}   `json:"skuLabelInfo"`
-	PromotionLabelInfoList []struct{} `json:"promotionLabelInfoList"`
-	SecondPriceInfoList    []struct{} `json:"secondPriceInfoList"`
-	PreSaleInfo            struct{}   `json:"preSaleInfo"`
-	ReserveInfo            struct{}   `json:"reserveInfo"`
+	CategoryInfo           interface{}   `json:"categoryInfo"`
+	Comments               int           `json:"comments"`
+	CommissionInfo         interface{}   `json:"commissionInfo"`
+	CouponInfo             interface{}   `json:"couponInfo"`
+	GoodCommentsShare      float32       `json:"goodCommentsShare"`
+	ImageInfo              interface{}   `json:"imageInfo"`
+	InOrderCount30Days     int           `json:"inOrderCount30Days"`
+	MaterialUrl            string        `json:"materialUrl"`
+	PriceInfo              interface{}   `json:"priceInfo"`
+	ShopInfo               interface{}   `json:"shopInfo"`
+	SkuId                  int           `json:"skuId"`
+	SkuName                string        `json:"skuName"`
+	Spuid                  int           `json:"spuid"`
+	BrandCode              string        `json:"brandCode"`
+	BrandName              string        `json:"brandName"`
+	Owner                  string        `json:"owner"`
+	PinGouInfo             interface{}   `json:"pinGouInfo"`
+	ResourceInfo           interface{}   `json:"resourceInfo"`
+	InOrderCount30DaysSku  int           `json:"inOrderCount30DaysSku"`
+	SeckillInfo            interface{}   `json:"seckillInfo"`
+	JxFlags                []int         `json:"jxFlags"`
+	VideoInfo              interface{}   `json:"videoInfo"`
+	DocumentInfo           interface{}   `json:"documentInfo"`
+	BookInfo               interface{}   `json:"bookInfo"`
+	ForbidTypes            []int         `json:"forbidTypes"`
+	DeliveryType           int           `json:"deliveryType"`
+	SkuLabelInfo           interface{}   `json:"skuLabelInfo"`
+	PromotionLabelInfoList []interface{} `json:"promotionLabelInfoList"`
+	SecondPriceInfoList    []interface{} `json:"secondPriceInfoList"`
+	PreSaleInfo            interface{}   `json:"preSaleInfo"`
+	ReserveInfo            interface{}   `json:"reserveInfo"`
 }
