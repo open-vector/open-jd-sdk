@@ -62,7 +62,7 @@ func (jdClient JdClient) Execute(requestInterface model.RequestInterface, respon
 	fmt.Println(string(body))
 
 	// 返回结果统一处理
-	model.ResponseHandle(body, response)
+	model.ResponseHandle(body, response, jdClient.Method)
 }
 
 // md5加密
