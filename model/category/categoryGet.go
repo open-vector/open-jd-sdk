@@ -12,11 +12,11 @@ import (
 request
 */
 
-type CateforyQuery struct {
+type CateGoryQuery struct {
 	req CategoryReq `json:"req"`
 }
 
-func (CateforyQuery) GetMethod() string {
+func (CateGoryQuery) GetMethod() string {
 	return "jd.union.open.category.goods.get"
 }
 
@@ -31,7 +31,7 @@ response
 
 type GetResult struct {
 	model.BaseResult
-	data []CategoryResp `json:"data"`
+	Data []CategoryResp `json:"data"`
 }
 
 type CategoryResp struct {

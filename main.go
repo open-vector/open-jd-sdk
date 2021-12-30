@@ -14,7 +14,7 @@ func main() {
 
 	// 实例化一个client
 	// todo 让使用sdk的用户指定ak sk等等 目前写死
-	jdClient := client.New()
+	jdClient := client.New("", "")
 
 	// 定义响应并发送请求
 	var jingfenQueryResult goods.JingfenQueryResult
