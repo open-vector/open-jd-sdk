@@ -13,7 +13,7 @@ request
 */
 
 type CateGoryQuery struct {
-	req CategoryReq `json:"req"`
+	Req CategoryReq `json:"req"`
 }
 
 func (CateGoryQuery) GetMethod() string {
