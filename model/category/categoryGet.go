@@ -37,6 +37,6 @@ type GetResult struct {
 type CategoryResp struct {
 	Id       int    `json:"id"`
 	Name     string `json:"name"`
-	Grade    string `json:"grade"`
-	ParentId string `json:"ParentId"`
+	Grade    int    `json:"grade"`
+	ParentId int    `json:"parentId"`
 }
