@@ -21,7 +21,7 @@ func (CouponQueryRequest) GetMethod() string {
 response
 */
 
-type CouponQueryResult struct {
+type QueryResult struct {
 	model.BaseResult
 	Data []CouponResp `json:"data"`
 }
