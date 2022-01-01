@@ -9,7 +9,7 @@ request
 */
 
 type ActivityQuery struct {
-	activityReq ActivityReq `json:"activityReq"`
+	ActivityReq ActivityReq `json:"activityReq"`
 }
 
 func (ActivityQuery) GetMethod() string {
@@ -29,7 +29,7 @@ response
 
 type QueryResult struct {
 	model.BaseResult
-	data       []ActivityResp `json:"data"`
+	Data       []ActivityResp `json:"data"`
 	TotalCount int            `json:"totalCount"`
 }
 
