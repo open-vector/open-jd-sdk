@@ -16,26 +16,28 @@ func (MaterialQueryRequest) GetMethod() string {
 }
 
 type MaterialGoodsReq struct {
-	EliteId      int    `json:"eliteId"`
-	PageIndex    int    `json:"pageIndex"`
-	PageSize     int    `json:"pageSize"`
-	SortName     string `json:"sortName"`
-	Sort         string `json:"sort"`
-	Pid          string `json:"pid"`
-	SubUnionId   string `json:"subUnionId"`
-	SiteId       string `json:"siteId"`
-	PositionId   string `json:"positionId,omitempty"`
-	Ext1         string `json:"ext1"`
-	SkuId        int    `json:"skuId"`
-	HasCoupon    int    `json:"hasCoupon"`
-	UserIdType   int    `json:"userIdType"`
-	UserId       string `json:"userId"`
-	Fields       string `json:"fields"`
-	ForbidTypes  string `json:"forbidTypes"`
+	EliteId    int    `json:"eliteId,omitempty"`
+	PageIndex  int    `json:"pageIndex,omitempty"`
+	PageSize   int    `json:"pageSize,omitempty"`
+	SortName   string `json:"sortName,omitempty"`
+	Sort       string `json:"sort,omitempty"`
+	Pid        string `json:"pid,omitempty"`
+	SubUnionId string `json:"subUnionId,omitempty"`
+	SiteId     string `json:"siteId,omitempty"`
+	// 数字string
+	PositionId  string `json:"positionId,omitempty"`
+	Ext1        string `json:"ext1,omitempty"`
+	SkuId       int    `json:"skuId,omitempty"`
+	HasCoupon   int    `json:"hasCoupon,omitempty"`
+	UserIdType  int    `json:"userIdType,omitempty"`
+	UserId      string `json:"userId,omitempty"`
+	Fields      string `json:"fields,omitempty"`
+	ForbidTypes string `json:"forbidTypes,omitempty"`
+	// 数字string
 	OrderId      string `json:"orderId,omitempty"`
-	GroupId      int    `json:"groupId"`
-	OwnerUnionId int    `json:"ownerUnionId"`
-	BenefitType  int    `json:"benefitType"`
+	GroupId      int    `json:"groupId,omitempty"`
+	OwnerUnionId int    `json:"ownerUnionId,omitempty"`
+	BenefitType  int    `json:"benefitType,omitempty"`
 }
 
 /**

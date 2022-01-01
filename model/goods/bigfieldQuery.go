@@ -17,8 +17,8 @@ func (BigFieldQueryRequest) GetMethod() string {
 }
 
 type BigFieldGoodsReq struct {
-	SkuIds []int    `json:"skuIds"`
-	Fields []string `json:"fields"`
+	SkuIds []int    `json:"skuIds,omitempty"`
+	Fields []string `json:"fields,omitempty"`
 }
 
 /**

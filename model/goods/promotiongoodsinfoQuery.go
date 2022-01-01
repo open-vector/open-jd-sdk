@@ -11,7 +11,7 @@ request
 
 type PromotiongoodsinfoQueryRequest struct {
 	// 多个sku逗号分隔
-	SkuIds string `json:"skuIds"`
+	SkuIds string `json:"skuIds,omitempty"`
 }
 
 func (PromotiongoodsinfoQueryRequest) GetMethod() string {
