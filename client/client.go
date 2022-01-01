@@ -13,13 +13,16 @@ import (
 )
 
 type JdClient struct {
-	Method    string `json:"method"`
 	AppKey    string `json:"app_key"`
-	Timestamp string `json:"timestamp"`
 	V         string `json:"v"`
+	SecretKey string `json:"secretKey"`
+}
+
+type SysParam struct {
+	Method    string `json:"method"`
+	Timestamp string `json:"timestamp"`
 	Sign      string `json:"sign"`
 	Param     string `json:"360buy_param_json"`
-	SecretKey string `json:"secretKey"`
 }
 
 // New 实例化jdClient
@@ -31,15 +34,13 @@ func New(appKey string, secretKey string) JdClient {
 func (jdClient JdClient) Execute(requestInterface model.RequestInterface, response interface{}) {
 	url := "https://api.jd.com/routerjson"
 
-	request := jsonUtil.GetByte(requestInterface)
-	method := requestInterface.GetMethod()
-
-	jdClient.Timestamp = time.Now().Format("2006-01-02 15:04:05")
-	jdClient.Method = method
-	jdClient.Param = string(request)
+	var sysParam SysParam
+	sysParam.Timestamp = time.Now().Format("2006-01-02 15:04:05")
+	sysParam.Method = requestInterface.GetMethod()
+	sysParam.Param = string(jsonUtil.GetByte(requestInterface))
 	// 此处顺序不能乱
-	jdClient.Sign = sign(getPreSignStr(jdClient))
-	payload := strings.NewReader(getReader(jdClient))
+	sysParam.Sign = sign(getPreSignStr(jdClient, sysParam))
+	payload := strings.NewReader(getReader(jdClient, sysParam))
 
 	client := &http.Client{}
 	req, err := http.NewRequest(http.MethodPost, url, payload)
@@ -62,7 +63,7 @@ func (jdClient JdClient) Execute(requestInterface model.RequestInterface, respon
 	fmt.Println(string(body))
 
 	// 返回结果统一处理
-	model.ResponseHandle(body, response, jdClient.Method)
+	model.ResponseHandle(body, response, sysParam.Method)
 }
 
 // md5加密
@@ -74,13 +75,13 @@ func sign(src string) string {
 }
 
 // 获取签名前字符串
-func getPreSignStr(jdClient JdClient) string {
+func getPreSignStr(jdClient JdClient, sysParam SysParam) string {
 	return fmt.Sprintf("%s360buy_param_json%sapp_key%smethod%stimestamp%sv%s%s",
-		jdClient.SecretKey, jdClient.Param, jdClient.AppKey, jdClient.Method, jdClient.Timestamp, jdClient.V, jdClient.SecretKey)
+		jdClient.SecretKey, sysParam.Param, jdClient.AppKey, sysParam.Method, sysParam.Timestamp, jdClient.V, jdClient.SecretKey)
 }
 
 // 构造payload
-func getReader(jdClient JdClient) string {
+func getReader(jdClient JdClient, sysParam SysParam) string {
 	return fmt.Sprintf("app_key=%s&v=%s&method=%s&timestamp=%s&sign=%s&360buy_param_json=%s",
-		jdClient.AppKey, jdClient.V, jdClient.Method, jdClient.Timestamp, jdClient.Sign, jdClient.Param)
+		jdClient.AppKey, jdClient.V, sysParam.Method, sysParam.Timestamp, sysParam.Sign, sysParam.Param)
 }
