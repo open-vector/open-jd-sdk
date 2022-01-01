@@ -11,7 +11,7 @@ request
 */
 
 type JingfenQueryRequest struct {
-	GoodReq JFGoodsReq `json:"goodsReq"`
+	GoodsReq JFGoodsReq `json:"goodsReq"`
 }
 
 func (JingfenQueryRequest) GetMethod() string {
