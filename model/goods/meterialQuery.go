@@ -24,7 +24,7 @@ type MaterialGoodsReq struct {
 	Pid          string `json:"pid"`
 	SubUnionId   string `json:"subUnionId"`
 	SiteId       string `json:"siteId"`
-	PositionId   string `json:"positionId"`
+	PositionId   string `json:"positionId,omitempty"`
 	Ext1         string `json:"ext1"`
 	SkuId        int    `json:"skuId"`
 	HasCoupon    int    `json:"hasCoupon"`
@@ -32,7 +32,7 @@ type MaterialGoodsReq struct {
 	UserId       string `json:"userId"`
 	Fields       string `json:"fields"`
 	ForbidTypes  string `json:"forbidTypes"`
-	OrderId      string `json:"orderId"`
+	OrderId      string `json:"orderId,omitempty"`
 	GroupId      int    `json:"groupId"`
 	OwnerUnionId int    `json:"ownerUnionId"`
 	BenefitType  int    `json:"benefitType"`
